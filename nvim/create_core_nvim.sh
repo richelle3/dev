@@ -16,6 +16,8 @@ share_dir="$HOME/.local/share/nvim"
 
 # Create necessary directories
 mkdir -p "$conf_dir/lua/core"
+mkdir -p "$conf_dir/lua/plugins"
+echo "return {}" > ${conf_dir}/lua/plugins/init.lua
 mkdir -p "$share_dir"
 
 # Create basic init.lua file
@@ -24,7 +26,7 @@ cat > "$conf_dir/init.lua" << 'EOF'
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Basic settings
+-- ...
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
@@ -33,12 +35,34 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Цвета терминала и отступы
-vim.opt.termguicolors = true -- Включаем true color
-vim.opt.scrolloff = 3        -- Отступ от краёв экрана при прокрутке
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 3
+
+-- Перенос строк и визуальное отображение
+vim.opt.wrap = true -- Не переносить строки
+vim.opt.linebreak = true -- Переносить строки по словам
+vim.opt.breakindent = true -- Сохранять отступ при переносе
+vim.opt.breakindentopt = 'shift:2' -- Настройка отступа для переноса
+vim.opt.showbreak = '↪ ' -- Символ для переноса строки
+vim.opt.fillchars:append({ eob = ' ' }) -- Убрать тильду в конце файла
+
+-- Отображение скрытых символов
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = '▸ ',
+  trail = '·',
+  extends = '>',
+  precedes = '<',
+  nbsp = '␣',
+}
 
 require('core').setup({
   use_termux_open = true,
   lazy_manager = true,
+})
+
+require('lazy').setup({
+  import = 'plugins',
 })
 EOF
 
