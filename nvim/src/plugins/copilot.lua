@@ -13,18 +13,18 @@ return {
 
       require("copilot").setup({
         filetypes = {
-          ["*"] = true, -- Включить для всех файлов
-          markdown = true, -- Явно включить для markdown
+          ["*"] = true, -- Включить для всех файлов          markdown = true, -- Явно включить для markdown
         },
         suggestion = {
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<Tab>",
-            next = "<C-]>",
-            prev = "<C-[>",
-            dismiss = "<C-x>",
-          },
+            accept = "<C-l>",
+            next = "<C-j>",
+            prev = "<C-k>",
+            dismiss = "<C-h>",
+          }
+
         },
         panel = { enabled = true },
       })
