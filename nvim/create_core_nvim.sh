@@ -1,0 +1,93 @@
+#!/usr/bin/env sh
+
+# Название скрипта: create_core_nvim.sh
+# Автор: skriptux
+# Скрипт для:
+# - Создание core для nvim
+# - Базовая конфигурация nvim
+# - Создание платформы для программирования
+# NOTE: В core - все что необходимо до установки lsp серверов
+# - Комплит снипетов и т. д.
+
+echo "[ * ] Старт конфигурации"
+
+conf_dir="$HOME/.config/nvim"
+share_dir="$HOME/.local/share/nvim"
+
+# Create necessary directories
+mkdir -p "$conf_dir/lua/core"
+mkdir -p "$share_dir"
+
+# Create basic init.lua file
+cat > "$conf_dir/init.lua" << 'EOF'
+-- Basic Neovim configuration
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Basic settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+-- Цвета терминала и отступы
+vim.opt.termguicolors = true -- Включаем true color
+vim.opt.scrolloff = 3        -- Отступ от краёв экрана при прокрутке
+
+require('core').setup({
+  use_termux_open = true,
+  lazy_manager = true,
+})
+EOF
+
+# Create core module
+cat > "$conf_dir/lua/core/init.lua" << 'EOF'
+-- Core Neovim configuration module
+local M = {}
+
+function M.setup(opts)
+  opts = opts or {}
+
+  -- Использовать termux-open (например, для Android/Termux)
+  if opts.use_termux_open then
+    vim.ui.open = function(url)
+      vim.fn.jobstart({ "termux-open", url }, { detach = true })
+    end
+  else
+    vim.ui.open = function(url)
+      vim.fn.jobstart({ "xdg-open", url }, { detach = true })
+    end
+  end
+
+  -- Настройка автокоманд
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('core-highlight-yank', { clear = true }),
+    callback = function()
+      vim.highlight.on_yank()
+    end,
+  })
+
+  -- Ленивая инициализация менеджера плагинов
+  if opts.lazy_manager then
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not vim.loop.fs_stat(lazypath) then
+      vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+      })
+    end
+    vim.opt.rtp:prepend(lazypath)
+  end
+end
+
+return M
+EOF
+
+echo "[ Ok ] Basic Neovim core configuration created"
