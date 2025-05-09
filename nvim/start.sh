@@ -7,3 +7,4 @@
 
 # . ./del_config_nvim.sh
 . ./create_core_nvim.sh
+. ./add_plugins.sh

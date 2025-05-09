@@ -10,15 +10,20 @@ return {
       if vim.fn.executable("node") == 0 then
         vim.fn.system({ "apt", "install", "-y", "nodejs" })
       end
+
       require("copilot").setup({
+        filetypes = {
+          ["*"] = true, -- Включить для всех файлов
+          markdown = true, -- Явно включить для markdown
+        },
         suggestion = {
           enabled = true,
-          auto_trigger = true, -- Автоматически предлагать код
+          auto_trigger = true,
           keymap = {
             accept = "<Tab>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
+            next = "<C-]>",
+            prev = "<C-[>",
+            dismiss = "<C-x>",
           },
         },
         panel = { enabled = true },
@@ -27,7 +32,3 @@ return {
   },
 }
 
--- Что такое "<M-]>"?
---
--- <M-]> означает "Meta + ]", где Meta обычно соответствует клавише Alt на большинстве клавиатур.
--- -- То есть, когда вы нажимаете Alt и клавишу ] одновременно, это будет считаться нажатием сочетания <M-]>.
