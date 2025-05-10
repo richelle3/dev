@@ -56,6 +56,10 @@ vim.opt.listchars = {
   nbsp = '␣',
 }
 
+-- Keymaps
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 require('core').setup({
   use_termux_open = true,
   lazy_manager = true,
