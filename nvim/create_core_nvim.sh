@@ -20,13 +20,18 @@ mkdir -p "$conf_dir/lua/plugins"
 echo "return {}" > ${conf_dir}/lua/plugins/init.lua
 mkdir -p "$share_dir"
 
+# Create necessary files
+touch $conf_dir/.marksman.toml
+touch $conf_dir/.luacheck
+
 # Create basic init.lua file
 cat > "$conf_dir/init.lua" << 'EOF'
 -- Basic Neovim configuration
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.have_nerd_font = true
 
--- ...
+-- 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
@@ -37,6 +42,9 @@ vim.opt.smartindent = true
 -- Цвета терминала и отступы
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 3
+
+-- Статус и визуальные элементы
+vim.opt.showmode = false -- Не показывать режим внизу
 
 -- Перенос строк и визуальное отображение
 vim.opt.wrap = true -- Не переносить строки
