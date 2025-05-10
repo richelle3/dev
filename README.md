@@ -16,5 +16,5 @@ git clone git@github.com:richelle3/dev.git ~/dev
 
 ## Contents
 
-1. [Termux API](/nvim/termux_api.md)
+1. [Termux API](/termux/termux_api.md)
 
