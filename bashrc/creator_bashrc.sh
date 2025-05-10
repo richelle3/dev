@@ -9,8 +9,26 @@ alias gs='git status'
 alias update='pkg update && pkg upgrade'
 alias cls='clear'
 
+
 # PATH для пользовательских скриптов
 export PATH="$HOME/bin:$PATH"
+
+
+# Nnn
+## Nnn
+export NNN_PLUG="\
+i:exec;\
+v:nvim;\
+g:gpt;\
+m:music;\
+y:youtube;\
+t:term;\
+"
+export NNN_USE_EDITOR=1
+export NNN_PIPE="$HOME/.nnn_pipe"
+export NNN_SEL="$HOME/.nnn_sel"
+export NNN_FIFO="$HOME/.nnn_fifo"
+
 
 # Termux специфические настройки
 # termux-setup-storage 2>/dev/null
