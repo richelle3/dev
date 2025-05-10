@@ -18,3 +18,7 @@ git clone git@github.com:richelle3/dev.git ~/dev
 
 1. [Termux API](/termux/termux_api.md)
 
+> [!NOTE] from termux repo
+> termux-api/stable 0.59.1 aarch64
+> Termux API commands (install also the Termux:API app)
+
