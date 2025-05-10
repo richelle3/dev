@@ -10,8 +10,6 @@ share_dir="$HOME/.local/share/nvim"
 
 # Create necessary directories
 mkdir -p "$conf_dir/lua/core"
-mkdir -p "$conf_dir/lua/plugins"
-echo "return {}" > ${conf_dir}/lua/plugins/init.lua
 mkdir -p "$share_dir"
 
 # Create necessary files
@@ -66,6 +64,13 @@ require('core').setup({
 require('lazy').setup({
   import = 'plugins',
 })
+
+-- Подключение LSP
+vim.lsp.enable("luals")
+vim.lsp.enable("bashls")
+vim.lsp.enable("marksman")
+vim.lsp.enable("pyright")
+vim.lsp.enable("rust_analyzer")
 EOF
 
 # Create core module
