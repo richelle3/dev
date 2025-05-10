@@ -19,6 +19,10 @@ return {
     if not ok_luasnip then return end
 
     cmp.setup({
+      window = {
+        completion = cmp.config.window.bordered(), -- рамка вокруг автодополнения
+        documentation = cmp.config.window.bordered(), -- рамка вокруг документации
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
