@@ -76,6 +76,8 @@ EOF
 # Create core module
 cat > "$conf_dir/lua/core/init.lua" << 'EOF'
 -- Core Neovim configuration module
+-- https://neovim.io/doc/user/lsp.html
+
 local M = {}
 
 function M.setup(opts)
