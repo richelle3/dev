@@ -10,12 +10,11 @@ alias update='pkg update && pkg upgrade'
 alias cls='clear'
 
 
-# PATH для пользовательских скриптов
-export PATH="$HOME/bin:$PATH"
+# PATH для пользовательских программ
+export PATH="$HOME/.local/bin:$PATH"
 
 
 # Nnn
-## Nnn
 export NNN_PLUG="\
 i:exec;\
 v:nvim;\

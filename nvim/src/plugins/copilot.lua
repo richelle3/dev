@@ -19,7 +19,7 @@ return {
           enabled = true,
           auto_trigger = true,
           keymap = {
-            accept = "<C-l>",
+            accept = "<TAB>",
             next = "<C-j>",
             prev = "<C-k>",
             dismiss = "<C-h>",
