@@ -1,7 +1,7 @@
-# Dev
+# Dev [my GitHub](https://github.com/richelle3)
 
 >
-> Феномен, знакомый для Linux-энтузиастов
+> Феномен, знакомый Linux-энтузиастам
 >
 
 **Конфигурационный Адд** *(Config Addiction)*
@@ -16,5 +16,5 @@ git clone git@github.com:richelle3/dev.git ~/dev
 
 ## Contents
 
-1. [[termuxapi]]
+1. [Termux API](/nvim/termux_api.md)
 
