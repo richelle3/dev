@@ -3,7 +3,7 @@
 # Название скрипта: create_core_nvim.sh
 # Автор: skriptux
 
-echo "[ * ] Старт конфигурации"
+echo "[ * ] Старт конфигурации Neovim"
 
 conf_dir="$HOME/.config/nvim"
 share_dir="$HOME/.local/share/nvim"
@@ -18,12 +18,12 @@ touch $conf_dir/.luacheck
 
 # Create basic init.lua file
 cat > "$conf_dir/init.lua" << 'EOF'
--- Basic Neovim configuration
+-- Basic Neovim configuration --
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
--- 
+-- Appearance and UI --
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2

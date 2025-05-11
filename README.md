@@ -16,7 +16,7 @@ git clone git@github.com:richelle3/dev.git ~/dev
 
 ## Contents
 
-1. [Termux API](/termux/termux_api.md)
+1. [Termux API](/termux/src/termux_api.md)
 
 > [!NOTE] from termux repo
 > termux-api/stable 0.59.1 aarch64

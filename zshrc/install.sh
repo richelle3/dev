@@ -1,10 +1,15 @@
 #!/usr/bin/env sh
 
-echo "[..] Installing Zsh"
+# This script sets up Zsh and its configuration files.
 
-# Install Zsh
-apt install -y zsh
+# Проверка и установка Zsh в Termux
+if ! command -v zsh >/dev/null 2>&1; then
+  echo "[..] Installing zsh..."
+  apt install -y zsh
+  echo "[ Ok ] Zsh installed"
+fi
 
+echo "[..] Configuring Zsh"
 # Set paths
 TARGET="$HOME/.config/zsh"
 ZSH_DIR="./src/zsh"
