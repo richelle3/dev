@@ -1,5 +1,6 @@
 t() {
   if [ -z "$TMUX" ]; then
+    cd $HOME/dev;
     tmux new-session -d -s "work" -n "XD" "zsh"
     tmux attach-session -t "work"
   else
