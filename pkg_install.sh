@@ -36,4 +36,4 @@ refresh
 
 install git curl wget zip unzip tar gzip
 install fzf fd ripgrep bc
-install bat exa lsd
+install bat eza lsd
