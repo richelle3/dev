@@ -9,15 +9,18 @@ fi
 # Запись конфигурации .tmux.conf
 cat > "$HOME/.tmux.conf" <<'EOF'
 # ~/.tmux.conf
+# Убираем стандартный префикс
 unbind C-b
-set -g prefix C-Space
-bind-key C-Space send-prefix
 
-# Режим изменения размера панели с Ctrl + стрелками
-bind -n C-Left  resize-pane -L 3
-bind -n C-Right resize-pane -R 3
-bind -n C-Up    resize-pane -U 3
-bind -n C-Down  resize-pane -D 3
+# Новый префикс: Ctrl-Space (если не работает — замени на C-a)
+set -g prefix C-Space
+bind C-Space send-prefix
+
+# Изменение размеров панелей после префикса + H/J/K/L
+bind H resize-pane -L 3
+bind L resize-pane -R 3
+bind K resize-pane -U 3
+bind J resize-pane -D 3
 
 set-option -g focus-events on
 
