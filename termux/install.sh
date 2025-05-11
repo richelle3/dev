@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-# Установка шрифта и конфигурация Termux
+# Установка шрифта и конфигурации Termux
 
 TARGET="$HOME"
-SOURCE="./src/termux"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo $SCRIPT_DIR
+SOURCE="$SCRIPT_DIR/src/termux"
 
 echo "[ * ] Установка шрифта и конфигурации Termux"
 
@@ -19,5 +21,5 @@ rm -rf "$TARGET/.termux"
 # Копирование новой конфигурации
 cp -r "$SOURCE" "$TARGET/.termux"
 
-echo "[ ✓ ] Конфигурация Termux установлена"
+echo "[ ✓ ] Конфигурация Termux установлена в $TARGET/.termux"
 

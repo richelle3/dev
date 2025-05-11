@@ -4,7 +4,9 @@
   - [Вариант 2: Установка через ADB:](#вариант-2-установка-через-adb)
 - [Шаг 2: Установка CLI-интерфейса внутри Termux](#шаг-2-установка-cli-интерфейса-внутри-termux)
 <!--toc:end-->
-
+> [!INFO] info
+> termux-api/stable 0.59.1 aarch64
+> Termux API commands (install also the Termux:API app)
 > Чтобы установить `com.termux.api_1000.apk` в Termux на Android, следуй этим шагам:
 
 ### Шаг 1: Установка `termux-api`
