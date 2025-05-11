@@ -35,5 +35,5 @@ install() {
 refresh
 
 install git curl wget zip unzip tar gzip
-install fzf fd ripgrep
+install fzf fd ripgrep bc
 install bat exa lsd
