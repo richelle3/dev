@@ -30,6 +30,7 @@ set -ga terminal-overrides ",xterm-256color:RGB"
 set -as terminal-features 'xterm-256color:RGB'
 
 set -g status on
+set -g status-interval 60
 set -g status-position bottom
 set -g status-justify centre
 set -g status-style bg=black,fg=yellow
