@@ -37,3 +37,6 @@ refresh
 install git curl wget jq zip unzip tar gzip
 install fzf fd ripgrep bc
 install bat eza lsd
+
+#Optional
+install x11-repo
