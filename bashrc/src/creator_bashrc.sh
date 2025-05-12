@@ -40,9 +40,9 @@ alias vim='nvim'
 # FZF (если установлен)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# Загрузка окружения nvm (если установлен)
-if [ -d "$HOME/.nvm" ]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-fi
+## Загрузка окружения nvm (если установлен)
+# if [ -d "$HOME/.nvm" ]; then
+#     export NVM_DIR="$HOME/.nvm"
+#     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# fi
 EOF
