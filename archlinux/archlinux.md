@@ -110,3 +110,85 @@ pacman -S base-devel vim git
 
 ---
 
+Отлично. Termux обычно запускается на Android-устройстве с архитектурой **`aarch64`** (ARM64), если только ты не используешь x86-эмулятор, что маловероятно.
+
+### 🔧 Значит, можно собрать кастомную установку Arch Linux в `$HOME/arch`, без `proot-distro`.
+
+Вот что я тебе предлагаю:
+
+---
+
+## ✅ Установка Arch в `$HOME/arch` через `proot` (ручной, стабильный способ)
+
+### 1. Установи зависимости:
+
+```bash
+pkg update
+pkg install proot tar curl
+```
+
+---
+
+### 2. Скачай и распакуй Arch Linux (bootstrap):
+
+```bash
+mkdir -p ~/arch/rootfs
+cd ~/arch
+curl -LO http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+tar -xpf ArchLinuxARM-aarch64-latest.tar.gz --exclude='dev' -C ~/arch/rootfs
+```
+
+---
+
+### 3. Создай скрипт запуска `start-arch.sh`
+
+```bash
+cat > ~/arch/start-arch.sh << 'EOF'
+#!/bin/bash
+unset LD_PRELOAD
+proot \
+  --link2symlink \
+  -0 \
+  -r ~/arch/root.aarch64 \
+  -b /dev \
+  -b /proc \
+  -b /sys \
+  -b ~/arch/root.aarch64/root:/root \
+  -b ~/arch/root.aarch64/tmp:/tmp \
+  -w /root \
+  /usr/bin/env -i \
+    HOME=/root \
+    TERM="$TERM" \
+    LANG=C.UTF-8 \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login
+EOF
+
+chmod +x ~/arch/start-arch.sh
+```
+
+---
+
+### 4. Запусти Arch:
+
+```bash
+~/arch/start-arch.sh
+```
+
+Первый запуск займёт немного времени. Далее — ты внутри полноценного Arch Linux.
+
+---
+
+### 5. (опционально) Настроим систему внутри Arch:
+
+```bash
+pacman-key --init
+pacman-key --populate archlinuxarm
+pacman -Syu
+pacman -S vim git curl
+```
+
+---
+
+Хочешь, чтобы я дал тебе скрипт, который всё это сделает за тебя?
+

@@ -1,16 +1,32 @@
 #!/usr/bin/env sh
 
-rm -rf $HOME/arch
+# === Удаляем старую установку (опционально, если хочешь с нуля) ===
+rm -rf "$HOME/arch"
 
+# === Обновляем и устанавливаем зависимости ===
 pkg update && pkg upgrade -y
 pkg install proot tar curl -y
 
+# === Создаем директорию для установки ===
 mkdir -p ~/arch/rootfs
 cd ~/arch
 
-curl -LO https://mirror.rackspace.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz
-proot --link2symlink tar -xpf ArchLinuxARM-aarch64-latest.tar.gz --exclude='dev' -C rootfs
+# === Скачиваем архив, если его ещё нет ===
+ARCHIVE="ArchLinuxARM-aarch64-latest.tar.gz"
+ARCH_URL="http://os.archlinuxarm.org/os/$ARCHIVE"
 
+if [ ! -f "$ARCHIVE" ]; then
+  echo "Скачиваем $ARCHIVE..."
+  curl -LO "$ARCH_URL"
+else
+  echo "Архив уже существует: $ARCHIVE"
+fi
+
+# === Распаковываем архив в rootfs (без dev) ===
+echo "Распаковываем..."
+tar -xpf "$ARCHIVE" --exclude='dev' -C ~/arch/rootfs
+
+# === Создаём скрипт запуска ===
 cat > start-arch.sh << 'EOF'
 #!/usr/bin/env bash
 
@@ -26,9 +42,19 @@ proot \
   -b /proc \
   -b /sys \
   -b /sdcard \
+  -b /data/data/com.termux/files/home:/hosthome \
   -w /root \
-  /bin/bash --login
+  /usr/bin/env -i \
+    HOME=/root \
+    TERM="$TERM" \
+    LANG=C.UTF-8 \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login
 EOF
 
+# === Делаем скрипт исполняемым ===
 chmod +x start-arch.sh
+
+echo "✅ Установка завершена. Запусти Arch Linux командой:"
+echo "./start-arch.sh"
 
