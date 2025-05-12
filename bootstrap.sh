@@ -4,8 +4,13 @@
 # Скрипт предназначен для Termux
 # Author: @skriptux
 
-# . ./bashrc/install.sh
-# . ./termux/install.sh
-. ./tmux/install.sh
-. ./zshrc/install.sh
-. ./nvim/install.sh
+# Получаем путь к директории, где находится сам скрипт
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+
+# Подключаем модули
+# . "$SCRIPT_DIR/bashrc/install.sh"
+# . "$SCRIPT_DIR/termux/install.sh"
+. "$SCRIPT_DIR/zshrc/install.sh"
+. "$SCRIPT_DIR/tmux/install.sh"
+. "$SCRIPT_DIR/nvim/install.sh"
+

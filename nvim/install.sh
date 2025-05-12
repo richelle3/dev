@@ -5,7 +5,11 @@
 ##  -- for Termux --   ##
 #########################
 
-# . ./del_config_nvim.sh
-. ./shell/create_core_nvim.sh
-. ./shell/add_plugins.sh
-. ./shell/add_lsp.sh
+# Получаем абсолютный путь к директории, где лежит сам скрипт
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+
+# Подключаем скрипты, независимо от текущей директории
+. "$SCRIPT_DIR/shell/create_core_nvim.sh"
+. "$SCRIPT_DIR/shell/add_plugins.sh"
+. "$SCRIPT_DIR/shell/add_lsp.sh"
+

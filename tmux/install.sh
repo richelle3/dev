@@ -2,8 +2,9 @@
 
 # Проверка и установка tmux в Termux
 if ! command -v tmux >/dev/null 2>&1; then
-  echo "[..] Installing tmux..."
+  echo "[ .. ] Installing tmux..."
   apt install -y tmux
+  echo "[ Ok ] Tmux installed"
 fi
 
 # Запись конфигурации .tmux.conf
