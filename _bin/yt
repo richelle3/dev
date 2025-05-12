@@ -4,7 +4,11 @@
 watch() {
   termux-open $1
 }
-# bread, what browser is that!? (it's qutebrowser!)
-watch https://youtu.be/0E-zU2Uq-rM?si=AuA95X2wMhVNIWXw
+## bread, what browser is that!? (it's qutebrowser!)
+# watch https://youtu.be/0E-zU2Uq-rM?si=AuA95X2wMhVNIWXw
 
+# Motivation
+watch https://youtu.be/DShyTzLX3ks?si=cDgsl_99x7mutkBn
 
+## For termux
+#watch https://youtu.be/FFaIQzCi3VM?si=-rNmq5GOiUxwYGUZ
