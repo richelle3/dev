@@ -33,14 +33,20 @@ set -g status-position bottom
 set -g status-justify centre
 set -g status-style bg=black,fg=yellow
 
-set -g status-left ""
-set -g status-right ""
+set -g status-left-length 14
+set -g status-left "#[fg=green]₿=#(curl -s https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT | jq -r '.price')"
 
+setw -g window-status-format " #[fg=green]#I "
+setw -g window-status-current-format " #[bold]#I "
+
+# время и дата
+set -g status-right "#[fg=green]%H:%M %d/%m/%y"
+
+# Pane border
 setw -g pane-border-status top
 setw -g pane-border-format "#[bg=black,fg=yellow] #{b:pane_current_path} "
 setw -g pane-active-border-style fg=yellow
-
-setw -g window-status-format "#I:#W"
-setw -g window-status-current-format "#[bold]#I:#W"
 EOF
+
+tmux source-file "$HOME/.tmux.conf"
 
