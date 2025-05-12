@@ -39,7 +39,7 @@ set -g status-left-length 14
 set -g status-left "#[fg=green]₿=#(curl -s https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT | jq -r '.price')"
 
 setw -g window-status-format " #[fg=green]#I "
-setw -g window-status-current-format " #[bold]#I "
+setw -g window-status-current-format " #[bold]_ "
 
 # время и дата
 set -g status-right "#[fg=green]%H:%M %d/%m/%y"
