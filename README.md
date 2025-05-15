@@ -1,8 +1,6 @@
 # Dev [my GitHub](https://github.com/richelle3)
 
->
 > Феномен, знакомый Linux-энтузиастам
->
 
 ## **Конфигурационный Адд** *(Config Addiction)*
 
