@@ -38,5 +38,8 @@ install git curl wget jq zip unzip tar gzip
 install fzf fd ripgrep bc
 install bat eza lsd
 
-#Optional
+# Languages
+install python nodejs rust
+
+# Optional
 install x11-repo
