@@ -18,6 +18,10 @@ function M.setup(opts)
     require('core.cmds')
   end
 
+  if opts.keymaps then
+    require('core.keymaps')
+  end
+
   if opts.lazy_manager then
     require('core.lazy_manager')
   end
@@ -25,6 +29,7 @@ function M.setup(opts)
   if opts.lsps then
     require('core.lsps')
   end
+
 end
 
 return M

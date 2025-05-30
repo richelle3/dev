@@ -1,28 +1,21 @@
--- Basic Neovim configuration --
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.g.have_nerd_font = true
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0
+-- vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd("let g:netrw_banner = 0 ")
 
--- Appearance and UI --
-vim.opt.number = true
+vim.opt.guicursor = ""
+vim.opt.nu = true
 vim.opt.relativenumber = true
+
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.colorcolumn = '80' -- Вертикальная линия на 80 символе
-vim.opt.signcolumn = 'yes' -- Всегда показывать столбец знаков
-vim.opt.cursorline = true -- Подсветка текущей строки
-
--- Цвета терминала и отступы
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 3
-
--- Статус и визуальные элементы
-vim.opt.showmode = false -- Не показывать режим внизу
+vim.opt.wrap = false
 
 -- Перенос строк и визуальное отображение
-vim.opt.wrap = true -- Не переносить строки
 vim.opt.linebreak = true -- Переносить строки по словам
 vim.opt.breakindent = true -- Сохранять отступ при переносе
 vim.opt.breakindentopt = 'shift:2' -- Настройка отступа для переноса
@@ -39,7 +32,48 @@ vim.opt.listchars = {
   nbsp = '␣',
 }
 
--- Keymaps
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.incsearch = true
+vim.opt.inccommand = "split"
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+
+-- Enable folding ( setup in nvim-ufo )
+vim.o.foldenable = true     -- Enable folding by default
+vim.o.foldmethod = "manual" -- Default fold method (change as needed)
+vim.o.foldlevel = 99        -- Open most folds by default
+vim.o.foldcolumn = "0"
+
+-- backspace
+vim.opt.backspace = { "start", "eol", "indent" }
+
+--split windows
+vim.opt.splitright = true --split vertical window to the right
+vim.opt.splitbelow = true --split horizontal window to the bottom
+
+vim.opt.isfname:append("@-@")
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "80"
+
+-- clipboard
+-- vim.opt.clipboard:append("unnamedplus") --use system clipboard as default
+vim.opt.hlsearch = true
+
+-- for easy mouse resizing, just incase
+vim.opt.mouse = "a"
+
+-- gets rid of line with white spaces
+vim.g.editorconfig = true
 
